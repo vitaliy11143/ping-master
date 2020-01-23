@@ -7,23 +7,18 @@ from go import Ball, Sled # игровые объекты
 
 pg.init()
 pg.mixer.init() #инициализация звуков
-pg.font.init() # инициализация текста 
-font = pg.font.Font(None, 72)
-text = font.render("Hello Wold", 1, (0, 100, 0))
-place = text.get_rect(center=(200, 150))
-pg.screen.blit(text, place)
 
-FPS  = 120
+FPS  = 150
 SIZE = width, height = 640, 480
-BGCOLOR = 90, 90, 90
+BGCOLOR = 236, 238, 235
 
 screen = pg.display.set_mode(SIZE)         # создаём окошко
 clock  = pg.time.Clock()                   # создаем таймер
 
-ball1 = Ball("ball.png", (50, 40), [4, 4])   # создаём мяч
-ball2 = Ball("ball.png", (50, 20), [-4, 3])  # создаём мяч
+ball1 = Ball("ball.png", (50, 40), [3, 3])   # создаём мяч
+ball2 = Ball("ball.png", (50, 20), [-3, 2])  # создаём мяч
 
-sled = Sled("sled.png", (0, 0), [0, 0]) # создаём платформу
+sled = Sled("sled.png", (10, 0), [0, 0]) # создаём платформу
 
 balls = pg.sprite.Group()
 balls.add(ball1)
@@ -64,13 +59,13 @@ while again:
 
         
 
-    # логика отскока мяча от границ экрана
+    # логика отскока мяча1 от границ экрана
     if ball1.rect.left < 0 or ball1.rect.right > width:
         ball1.speed[0] = -ball1.speed[0]
     if ball1.rect.top < 0 or ball1.rect.bottom > height:
         ball1.speed[1] = -ball1.speed[1]
     
-    # логика отскока мяча от границ экрана
+    # логика отскока мяча2 от границ экрана
     if ball2.rect.left < 0 or ball2.rect.right > width:
         ball2.speed[0] = -ball2.speed[0]
     if ball2.rect.top < 0 or ball2.rect.bottom > height:
